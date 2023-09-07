@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="0dp"
+        android:layout_weight=".17"
+        android:layout_marginLeft="5dp"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:src="@drawable/baseline_chevron_left_24"/>
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="Mandate Details"
+        android:textColor="@color/dark_grey"
+        android:textStyle="bold"
+        android:paddingRight="@dimen/twenty_five"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/ten"/>
+
+
+</LinearLayout>

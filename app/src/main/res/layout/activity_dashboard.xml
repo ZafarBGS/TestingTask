@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rfereloan.testingtask.ui.viewmodel.AutoPayViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".AutoPayActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_white"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            card_view:cardCornerRadius="1dp"
+            card_view:cardElevation="@dimen/ten">
+
+            <LinearLayout
+                android:id="@+id/ll_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/twenty"
+                android:layout_marginRight="@dimen/ten"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_valid_till_date"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="14dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_valid_upto_date"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="14dp"/>
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/text_margin_left_10dp"
+                    android:background="@color/grey_"/>
+
+                <TextView
+                    android:id="@+id/tv_frequency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Frequency - As presented"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/ten"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/grey_"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:layout_marginBottom="@dimen/ten"
+                    card_view:cardCornerRadius="5dp"
+                    app:cardBackgroundColor="@color/red_blur">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="@dimen/five"
+                        android:orientation="horizontal">
+                        
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/baseline_info_24"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="The amount will be blocked when ride is booked with SafeBoda. subject to above mentioned limit and validity. The limit is upto UGX10,000"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="@dimen/ten"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autopay Payment Options"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginLeft="@dimen/ten"
+            android:textStyle="bold"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/airtelButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:background="@drawable/a"
+                android:layout_margin="@dimen/ten"
+                android:onClick="@{() -> viewModel.makePayment(`Airtel`, 100.0)}" />
+
+            <Button
+                android:id="@+id/flexipayButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:background="@drawable/fp"
+                android:layout_margin="@dimen/ten"
+                android:onClick="@{() -> viewModel.makePayment(`FlexiPay`, 100.0)}" />
+
+            <Button
+                android:id="@+id/mtnButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:background="@drawable/m"
+                android:layout_margin="@dimen/ten"
+                android:onClick="@{() -> viewModel.makePayment(`MTN`, 100.0)}" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pay Using"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginLeft="@dimen/ten"
+            android:textStyle="bold"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:gravity="left|center"
+            android:background="@drawable/rectangle_outline">
+
+            <Button
+                android:id="@+id/payButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Airtel Money - XXXX XXXX 97"
+                android:textColor="@color/black"
+                android:paddingLeft="@dimen/ten"
+                android:background="@color/white"
+                android:gravity="left|center"
+                android:onClick="@{() -> viewModel.makePayment(`Airtel`, 100.0)}" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/ten"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
